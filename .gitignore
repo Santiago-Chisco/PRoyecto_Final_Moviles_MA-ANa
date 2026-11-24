@@ -1,0 +1,14 @@
+node_modules/
+backend/data.db*
+backend/public/
+app/build/
+app/.dart_tool/
+app/.flutter-plugins*
+app/android/
+app/web/
+app/ios/
+app/windows/
+app/linux/
+app/macos/
+app/pubspec.lock
+*.log

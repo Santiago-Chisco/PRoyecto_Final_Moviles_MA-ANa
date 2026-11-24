@@ -1,0 +1,26 @@
+# Blueprint de Render: base de datos PostgreSQL + servicio web (API + app Flutter web)
+databases:
+  - name: tienda-db
+    plan: free
+    databaseName: tienda
+    user: tienda
+
+services:
+  - type: web
+    name: tienda-app
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: tienda-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      # Opcional: envío real de correos de recuperación (https://resend.com)
+      - key: RESEND_API_KEY
+        sync: false
+      - key: EMAIL_FROM
+        sync: false
